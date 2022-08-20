@@ -1,5 +1,10 @@
 * { padding: 0; margin: 0; box-sizing: border-box; }
 
+:root {
+    --main-color: red;
+    --second-color: #ffffff;
+}
+
 body {
     display: flex;
 }
@@ -17,4 +22,32 @@ body {
     width: 100%;
     height: 100%;
     border: 1px solid black;
+}
+
+body header {
+    background-color: var(--main-color);
+    padding: 2rem 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+body header div {
+    
+}
+
+body header div button {
+    background: transparent;
+    border: 1px solid var(--second-color);
+    border-radius: .25rem;
+    color: var(--second-color);
+    padding: .5rem 1rem;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: .25s;
+}
+
+body header div button:hover {
+    background: var(--second-color);
+    color: var(--main-color);
+    transform: scale(105%);
 }
