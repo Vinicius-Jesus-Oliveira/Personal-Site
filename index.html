@@ -5,30 +5,66 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="./libs/icons.css"/>
         <script src="https://kit.fontawesome.com/1d25e2ad24.js" crossorigin="anonymous"></script>
         <title>Vinicius Oliveira</title>
+
+        <script>
+            window.FontAwesomeConfig = {
+              searchPseudoElements: true
+            }
+        </script>
     </head>
     <body>
         <nav>
             <div><h3 id="myName">Vinicius Oliveira</h3></div>
-            
+
             <div id="socialmedia">
-                <a href="https://www.instagram.com/vini.oliveira._/" target="_blank"><i class="fa-brands fa-instagram fa-xl"></i></a>
-                <a href="https://www.linkedin.com/in/vinicius-oliveira-406163209" target="_blank"><i class="fa-brands fa-linkedin fa-xl"></i></a>
-                <a href="https://g.dev/vinicius-jesus-oliveira" target="_blank"><i class="fa-brands fa-google fa-xl"></i></a>
-                <a href="https://github.com/Vinicius-Jesus-Oliveira" target="_blank"><i class="fa-brands fa-github fa-xl"></i></a>
+                <a class="instagram" href="https://www.instagram.com/vini.oliveira._/" target="_blank">
+                    <div class="linha">
+                        <div class="cor"></div>
+                    </div>
+    
+                    <span> <i class="fab fa-instagram"></i> </span>
+                </a>
+                
+                <a class="linkedin" href="https://www.linkedin.com/in/vinicius-oliveira-406163209" target="_blank">
+                    <div class="linha">
+                        <div class="cor"></div>
+                    </div>
+    
+                    <span> <i class="fab fa-linkedin"></i> </span>
+                </a>
+                
+                <a class="google" href="https://g.dev/vinicius-jesus-oliveira" target="_blank">
+                    <div class="linha">
+                        <div class="cor"></div>
+                    </div>
+    
+                    <span> <i class="fab fa-google"></i> </span>
+                </a>
+                
+                <a class="github" href="https://github.com/Vinicius-Jesus-Oliveira" target="_blank">
+                    <div class="linha">
+                        <div class="cor"></div>
+                    </div>
+
+                    <span> <i class="fab fa-github"></i> </span>
+                </a>
             </div>
 
             <div id="settings">
-                <button type="button" title="settings">
+                <button type="button" title="settings" onclick="toggleMenu()">
                     <i class="fa-solid fa-gear fa-lg"></i>
                 </button>
             </div>
         </nav>
 
         <main>
-            <h1 id="title">👨🏾‍💻 Fullstack Developer 👨🏾‍💻</h2>
-                <img id="character" src="./assets/Vinicius pixel.png" alt="Pixel character">
+            <h1 id="title">👨🏾‍💻 Fullstack Developer 👨🏾‍💻</h1>
+
+            <img id="character" src="./assets/Vinicius pixel.png" alt="Pixel character">
+
             <p>
                 sfddaasdd asfddaasddasfddaas ddasfd daas ddasfdd aasdd asfddaasddasfddaasddasf ddaasddasf ddaasddasfddaa sddasfddaasddasfdda
                 sfddaasdd asfddaasddasfddaas ddasfd daas ddasfdd aasdd asfddaasddasfddaasddasf ddaasddasf ddaasddasfddaa sddasfddaasddasfdda
@@ -47,6 +83,41 @@
 
         </main>
 
+        <aside id="menu">
+            <div> <button onclick="toggleMenu()" id="closeModal">X</button> </div>
+
+            <div id="language">
+                <p>Idioma</p>
+                <select name="language">
+                    <option value="pt-br">Português</option>
+                </select>
+            </div>
+
+            <div id="theme">
+                <p>Tema</p>
+                <div>
+                    <button id="light">
+                        <div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </button>
+
+                    <button id="dark">
+                        <div></div>
+                        <div></div>
+                    </button>
+                </div>
+            </div>
+        </aside>
+
         <footer></footer>
+
+        <script src="./libs/icons.js"></script>
+        <script>
+            function toggleMenu() {
+                document.getElementById("menu").classList.toggle("open");
+            }
+        </script>
     </body>
 </html>

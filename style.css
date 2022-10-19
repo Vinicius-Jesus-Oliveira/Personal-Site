@@ -2,7 +2,7 @@
 
 :root {
     --main-color: rgb(196, 0, 0);
-    --second-color: #ffffff;
+    --secondary-color: #ffffff;
 }
 
 body {
@@ -10,6 +10,10 @@ body {
     flex-direction: column;
     width: 100vw;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+button {
+    cursor: pointer;
 }
 
 nav {
@@ -20,9 +24,9 @@ nav {
 
 nav div button {
     background: transparent;
-    border: 1px solid var(--second-color);
+    border: 1px solid var(--secondary-color);
     border-radius: .25rem;
-    color: var(--second-color);
+    color: var(--secondary-color);
     padding: .5rem 1rem;
     cursor: pointer;
     font-size: 1.1rem;
@@ -30,7 +34,7 @@ nav div button {
 }
 
 nav div button:hover {
-    background: var(--second-color);
+    background: var(--secondary-color);
     color: var(--main-color);
     transform: scale(105%);
 }
@@ -42,21 +46,124 @@ nav > * {
 
 #myName {
     font-weight: lighter;
+    color: #FFFFFF;
 }
 
 #socialmedia {
     flex: 1;
-    color: #FFFFFF;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
-#socialmedia > a {
-    margin: 0 .5rem;
+#socialmedia a {
+    position: relative;
+    list-style: none;
+    margin: 0 20px;
     cursor: pointer;
-    transition: 0.3s;
-    color: #FFFFFF;
+    transition: .3s;
+}
+
+#socialmedia a span {
+    text-decoration: none;
+    z-index: 1;
+}
+
+#socialmedia a span svg {
+    font-size: 2rem !important;
+    color: white !important;
+}
+
+#socialmedia a:before
+{
+    font-family: "Font Awesome 5 Brands";
+    font-weight: 900;
+    position: relative;
+    top: 0; left: 0;
+    font-size: 2rem !important;
+    color: red;
+    display: none;
+}
+
+svg[data-fa-pseudo-element=":before"]
+{
+    height: 2rem;
+    overflow: hidden !important;
+    position: absolute;
+    top: 0; left: 0;
+    width: 100% !important;
+    transition: 0.4s;
+    clip: rect(0px, 10rem, 0px, 0px);
+}
+
+#socialmedia a:hover > svg[data-fa-pseudo-element=":before"]
+{
+    clip: rect(0px, 10rem, 6rem, 0px);
+    height: 2rem;
+}
+
+#socialmedia a:hover > .linha .cor
+{
+    top: 100%;
+}
+
+.linha
+{
+    height: 115%;
+    margin-top: -15%;
+    width: 100%;
+    position: absolute;
+}
+
+.linha .cor 
+{
+    width: 100%;
+    height: .25rem;
+    background-color: #FFFFFF;
+    position: absolute;
+    top: 0;
+    transition: 0.4s;
+}
+
+.instagram::before
+{
+    content: "\f16d";
+}
+
+.linkedin::before
+{
+    content: "\f08c";
+}
+
+.google::before
+{
+    content: "\f1a0";
+}
+
+.github::before
+{
+    content: "\f09b";
+}
+
+svg[data-fa-pseudo-element=":before"][data-icon="instagram"]
+{
+    color: #0F0E0E;
+}
+
+svg[data-fa-pseudo-element=":before"][data-icon="linkedin"]
+{
+    color: #0F0E0E;
+}
+
+svg[data-fa-pseudo-element=":before"][data-icon="google"]
+{
+    color: #0F0E0E;
+}
+
+svg[data-fa-pseudo-element=":before"][data-icon="github"]
+{
+    color: #0F0E0E;
 }
 
 #settings {
@@ -79,7 +186,7 @@ main {
 
 #title {
     text-align: center;
-    margin-top: 2rem;
+    margin: 2rem 0;
     font-weight: 300;
 }
 
@@ -87,6 +194,114 @@ main {
     height: 150px;
     float: left;
     margin-right: 1rem;
+}
+
+#menu {
+    background: var(--secondary-color);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    max-width: 500px;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 0;
+    border-left: 1px solid rgb(0, 0, 0, .75);
+    transition: 1s;
+}
+
+#menu.open {
+    width: 75vw;
+    min-width: 250px;
+}
+
+#menu > div {
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+#closeModal {
+    background: transparent;
+    width: 2rem;
+    aspect-ratio: 1/1;
+    border: none;
+    font-size: 1.25rem;
+    color: rgb(0, 0, 0, .75);
+    transition: .3s;
+}
+
+#closeModal:hover {
+    transform: scale(110%);
+}
+
+#language {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+#menu p {
+    font-size: 1.15rem;
+}
+
+#language select {
+    margin-top: .25rem;
+    border-radius: .25rem;
+    padding: .5rem .25rem;
+    cursor: pointer;
+}
+
+#theme {
+    margin-top: 2rem;
+}
+
+#theme > div {
+    display: flex;
+    flex-direction: row;
+    margin-top: .25rem;
+}
+
+#theme > div > button {
+    height: 2rem;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    border: 1px solid rgb(0, 0, 0, .25);
+    display: grid;
+    place-items: center;
+    background: transparent;
+    transition: .3s;
+}
+
+#theme > div > button + button {
+    margin-left: .5rem;
+}
+
+#theme > div > button:hover {
+    transform: scale(105%);
+}
+
+#theme button > div {
+    height: 90%;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    display: flex;
+    overflow: hidden;
+    transform: rotate(25deg);
+}
+
+#theme button > div > div {
+    height: 100%;
+    flex: 1;
+}
+
+#light > div > div:first-child {
+    background: var(--main-color);
+}
+
+#light > div > div:last-child {
+    background: var(--secondary-color);
 }
 
 #settings > button:hover,
