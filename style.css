@@ -65,6 +65,10 @@ nav > * {
     transition: .3s;
 }
 
+#socialmedia > a:hover {
+    transform: scale(110%);
+}
+
 #socialmedia a span {
     text-decoration: none;
     z-index: 1;
@@ -184,14 +188,18 @@ main {
     margin: 0 auto;
 }
 
-#title {
+main section {
+    margin: 3rem 0;
+}
+
+.title {
     text-align: center;
-    margin: 2rem 0;
     font-weight: 300;
+    font-size: 2em;
+    margin-bottom: 1rem;
 }
 
 #character {
-    height: 150px;
     float: left;
     margin-right: 1rem;
 }
@@ -208,13 +216,15 @@ main {
     display: flex;
     flex-direction: column;
     padding: 2rem 0;
-    border-left: 1px solid rgb(0, 0, 0, .75);
+    border-left: 0 solid rgb(0, 0, 0, .75);
+    overflow: hidden;
     transition: 1s;
 }
 
 #menu.open {
     width: 75vw;
     min-width: 250px;
+    border-width: 1px;
 }
 
 #menu > div {
@@ -304,7 +314,95 @@ main {
     background: var(--secondary-color);
 }
 
-#settings > button:hover,
-#socialmedia > a:hover {
-    transform: scale(110%);
+#myDescription {
+    text-align: justify;
+}
+
+#technologiesTitle {
+    display: flex;
+    justify-content: center;
+    margin-bottom: .5rem;
+}
+
+#technologiesTitle img {
+    height: 2.5rem;
+    margin-top: .3rem;
+}
+
+#technologiesTitle .title {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+#carousel {
+    display: flex;
+    flex-direction: column;
+}
+
+#carousel > div:not(#buttons) {
+    display: flex;
+    margin: 0 2rem;
+}
+
+#carousel > div:not(#buttons)  > div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#carousel > div:not(#buttons) button {
+    background: transparent;
+    width: 2rem;
+    aspect-ratio: 1/1;
+    border-radius: .25rem;
+    border: 1px solid rgb(0, 0, 0, .75);
+    font-size: 1rem;
+    transition: .3s;
+}
+
+#carousel > div:not(#buttons) button:hover {
+    transform: scale(105%);
+    background: rgb(80, 80, 80, .1);
+}
+
+#carousel > div:not(#buttons) #images {
+    flex: 1;
+    height: 10rem;
+    position: relative;
+    overflow: hidden;
+}
+
+#carousel > div:not(#buttons) #images img {
+    height: 100%;
+    position: absolute;
+    left: 125%;
+    transform: translateX(-50%);
+    transition: 1s;
+}
+
+#carousel #buttons {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+#carousel #buttons button {
+    background: transparent;
+    border: 1px solid rgb(0, 0, 0, .75);
+    border-radius: 50%;
+    height: 1rem;
+    aspect-ratio: 1/1;
+    margin: 0 .25rem;
+    display: grid;
+    place-items: center;
+}
+
+#carousel #buttons button div {
+    height: 90%;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+}
+
+#carousel #buttons button.active div {
+    background-color: var(--main-color);
 }

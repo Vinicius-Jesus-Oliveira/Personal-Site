@@ -61,26 +61,34 @@
         </nav>
 
         <main>
-            <h1 id="title">👨🏾‍💻 Fullstack Developer 👨🏾‍💻</h1>
+            <section>
+                <h1 class="title">👨🏾‍💻 Fullstack Developer 👨🏾‍💻</h1>
+    
+                <div id="myDescription">
+                    <img id="character" src="./assets/Vinicius pixel.png" alt="Pixel character">
+                    <p>Comecei a programar no curso técnico, mas sempre fui apaixonado por tecnologia e informática, desde criança aprendendo a me virar na internet, pesquisando sozinho e descobrindo novas coisas.</p>
+                    <p>Sou mais desenvolto no Front End, sou criativo e gosto de criar interfaces, mas sempre me dei bem com o Back End e como eu disse, gosto de aprender de tudo.</p>
+                    <p>Acredito que os detalhes fazem a diferença, e levo isso em tudo na vida, mas também acredito que o simples e bem feito é a melhor abordagem.</p>
+                </div>
+            </section>
+            
+            <section>
+                <div id="technologiesTitle">
+                    <img src="./assets/code icon.png" alt="ícone de tecnologias">
+                    <h1 class="title">Tecnologias</h1>
+                    <img src="./assets/code icon.png" alt="ícone de tecnologias">
+                </div>
+                
+                <div id="carousel">
+                    <div>
+                        <div> <button id="previous" onclick="changeImage({ action: 'previous'})"><</button> </div>
+                        <div id="images"></div>
+                        <div> <button id="next" onclick="changeImage({ action: 'next'})">></button> </div>
+                    </div>
 
-            <img id="character" src="./assets/Vinicius pixel.png" alt="Pixel character">
-
-            <p>
-                sfddaasdd asfddaasddasfddaas ddasfd daas ddasfdd aasdd asfddaasddasfddaasddasf ddaasddasf ddaasddasfddaa sddasfddaasddasfdda
-                sfddaasdd asfddaasddasfddaas ddasfd daas ddasfdd aasdd asfddaasddasfddaasddasf ddaasddasf ddaasddasfddaa sddasfddaasddasfdda
-                sfddaasdd asfddaasddasfddaas ddasfd daas ddasfdd aasdd asfddaasddasfddaasddasf ddaasddasf ddaasddasfddaa sddasfddaasddasfdda
-                sfddaasdd asfddaasddasfddaas ddasfd daas ddasfdd aasdd asfddaasddasfddaasddasf ddaasddasf ddaasddasfddaa sddasfddaasddasfdda
-                sfddaasdd asfddaasddasfddaas ddasfd daas ddasfdd aasdd asfddaasddasfddaasddasf ddaasddasf ddaasddasfddaa sddasfddaasddasfdda
-                sfddaasdd asfddaasddasfddaas ddasfd daas ddasfdd aasdd asfddaasddasfddaasddasf ddaasddasf ddaasddasfddaa sddasfddaasddasfdda
-                sfddaasdd asfddaasddasfddaas ddasfd daas ddasfdd aasdd asfddaasddasfddaasddasf ddaasddasf ddaasddasfddaa sddasfddaasddasfdda
-                sfddaasdd asfddaasddasfddaas ddasfd daas ddasfdd aasdd asfddaasddasfddaasddasf ddaasddasf ddaasddasfddaa sddasfddaasddasfdda
-                sfddaasdd asfddaasddasfddaas ddasfd daas ddasfdd aasdd asfddaasddasfddaasddasf ddaasddasf ddaasddasfddaa sddasfddaasddasfdda
-                sfddaasdd asfddaasddasfddaas ddasfd daas ddasfdd aasdd asfddaasddasfddaasddasf ddaasddasf ddaasddasfddaa sddasfddaasddasfdda
-                sfddaasdd asfddaasddasfddaas ddasfd daas ddasfdd aasdd asfddaasddasfddaasddasf ddaasddasf ddaasddasfddaa sddasfddaasddasfdda
-                sfddaasdd asfddaasddasfddaas ddasfd daas ddasfdd aasdd asfddaasddasfddaasddasf ddaasddasf ddaasddasfddaa sddasfddaasddasfdda
-                sfddaasdd asfddaasddasfddaas ddasfd daas ddasfdd aasdd asfddaasddasfddaasddasf ddaasddasf ddaasddasfddaa sddasfddaasddasfdda
-            </p>
-
+                    <div id="buttons"></div>
+                </div>
+            </section>
         </main>
 
         <aside id="menu">
@@ -115,9 +123,98 @@
 
         <script src="./libs/icons.js"></script>
         <script>
+            const imagesContent = [
+                { alt: "Javascript icon", src: "https://camo.githubusercontent.com/442c452cb73752bb1914ce03fce2017056d651a2099696b8594ddf5ccc74825e/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f64657669636f6e732f64657669636f6e2f69636f6e732f6a6176617363726970742f6a6176617363726970742d6f726967696e616c2e737667" },
+                { alt: "React JS icon", src: "https://camo.githubusercontent.com/27d0b117da00485c56d69aef0fa310a3f8a07abecc8aa15fa38c8b78526c60ac/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f64657669636f6e732f64657669636f6e2f69636f6e732f72656163742f72656163742d6f726967696e616c2e737667" },
+                { alt: "HTML5 icon", src: "https://camo.githubusercontent.com/da7acacadecf91d6dc02efcd2be086bb6d78ddff19a1b7a0ab2755a6fda8b1e9/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f64657669636f6e732f64657669636f6e2f69636f6e732f68746d6c352f68746d6c352d6f726967696e616c2e737667" },
+                { alt: "CSS3 icon", src: "https://camo.githubusercontent.com/2e496d4bfc6f753ddca87b521ce95c88219f77800212ffa6d4401ad368c82170/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f64657669636f6e732f64657669636f6e2f69636f6e732f637373332f637373332d6f726967696e616c2e737667" },
+                { alt: "C# icon", src: "https://camo.githubusercontent.com/be406e7fcc11cd6204d544a8e1e3a168cd57a6fbf1d3b455830feeb85ef1ec76/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f64657669636f6e732f64657669636f6e2f69636f6e732f6373686172702f6373686172702d6f726967696e616c2e737667" },
+                { alt: "Azure icon", src: "https://camo.githubusercontent.com/796a6264884ec8c0d8dcb24ecd4232c1fc64c7cf8f8db836e5bbb915b7574cf8/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f64657669636f6e732f64657669636f6e2f69636f6e732f617a7572652f617a7572652d6f726967696e616c2e737667" },
+                { alt: "Bootstrap icon", src: "https://camo.githubusercontent.com/c76217244e1b3700a87058abf858e20a313b06dfadd972121d0d42de5bd20fa5/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f64657669636f6e732f64657669636f6e2f69636f6e732f626f6f7473747261702f626f6f7473747261702d6f726967696e616c2e737667" },
+                { alt: "Figma icon", src: "https://camo.githubusercontent.com/cdd289ae72f33665800bc6a63936d5afa0454214d520945780894151112a055f/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f64657669636f6e732f64657669636f6e2f69636f6e732f6669676d612f6669676d612d6f726967696e616c2e737667" },
+                { alt: "Firebase icon", src: "https://camo.githubusercontent.com/5e264dc8fcb694c4183413c371048cfb251b0e8ee84b64a0e8ee76750718ca50/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f64657669636f6e732f64657669636f6e2f69636f6e732f66697265626173652f66697265626173652d706c61696e2e737667" },
+                { alt: "Laravel icon", src: "https://camo.githubusercontent.com/569d9436b805ebea8af336170195070fd7ad6b866459fb1208f260a4876981f7/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f64657669636f6e732f64657669636f6e2f69636f6e732f6c61726176656c2f6c61726176656c2d706c61696e2e737667" },
+                { alt: "MySQL icon", src: "https://camo.githubusercontent.com/2582ec2237a3a1fbd34e9b57332b72be27a7facb32abe7c2335e5f86e5f457a8/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f64657669636f6e732f64657669636f6e2f69636f6e732f6d7973716c2f6d7973716c2d6f726967696e616c2e737667" },
+                { alt: "Node JS icon", src: "https://camo.githubusercontent.com/900baefb89e187c8b32cdbb3b440d1502fe8f30a1a335cc5dc5868af0142f8b1/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f64657669636f6e732f64657669636f6e2f69636f6e732f6e6f64656a732f6e6f64656a732d6f726967696e616c2e737667" },
+                { alt: "PHP icon", src: "https://camo.githubusercontent.com/9e581761c42b9210538e4727e082b7e1db70a621da3481eb6a348bdb5257af70/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f64657669636f6e732f64657669636f6e2f69636f6e732f7068702f7068702d6f726967696e616c2e737667" },
+                { alt: "SASS icon", src: "https://camo.githubusercontent.com/26901b819fb10ef4e2c652aa40e24775247664d84a7597bebb66898a24dddedd/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f64657669636f6e732f64657669636f6e2f69636f6e732f736173732f736173732d6f726967696e616c2e737667" }
+            ];
+
             function toggleMenu() {
                 document.getElementById("menu").classList.toggle("open");
             }
+
+            function changeImage({ action, specificImg }) {
+                const images = Array.from(document.querySelectorAll("#carousel #images img"));
+                const currentImgIndex = images.findIndex(i => i.classList.contains("active"));
+
+                if (images.length === 1 || currentImgIndex === specificImg)
+                    return;
+
+                images[currentImgIndex].classList.remove("active");
+
+                let targetImage = specificImg !== undefined ? images[specificImg] : images[currentImgIndex + (action === "next" ? 1 : -1)];
+
+                const buttons = Array.from(document.querySelectorAll("#carousel #buttons button"));
+                const currentButtonIndex = buttons.findIndex(b => b.classList.contains("active"));
+
+                buttons[currentButtonIndex].classList.remove("active");
+
+                if (targetImage) {
+                    if (specificImg > currentImgIndex || action === "next")
+                        images[currentImgIndex].style.left = "-25%";
+                    else
+                        images[currentImgIndex].style.left = "125%";
+
+                    targetImage.style.left = "50%";
+                    targetImage.classList.add("active");
+
+                    (specificImg !== undefined ? buttons[specificImg] : buttons[currentButtonIndex + (action === "next" ? 1 : -1)]).classList.add("active");
+                }
+                else {
+                    targetImage = action === "next" ? images.shift() : images.pop();
+
+                    images.forEach(img => img.style.left = "125%");
+                    targetImage.style.left = "50%";
+                    targetImage.classList.add("active");
+
+                    (action === "next" ?
+                        document.querySelector("#buttons button")
+                        : document.querySelector("#buttons button:last-child")
+                    ).classList.add("active");
+                }
+            }
+
+            function fillContentTechnologies() {
+                const divImages = document.querySelector("#carousel #images");
+                const divButtons = document.querySelector("#carousel #buttons");
+                
+                imagesContent.forEach((img, index) => {
+                    const imgElement = document.createElement("img");
+                    imgElement.alt = img.alt;
+                    imgElement.src = img.src;
+
+                    const buttonElement = document.createElement("button");
+                    buttonElement.onclick = () => changeImage({ specificImg: index });
+
+                    const divElement = document.createElement("div");
+
+
+                    if (img === imagesContent[0]) {
+                        imgElement.classList.add("active");
+                        imgElement.style.left = "50%";
+                        
+                        buttonElement.classList.add("active");
+                    }
+
+                    buttonElement.appendChild(divElement);
+
+                    divButtons.appendChild(buttonElement);
+                    divImages.appendChild(imgElement);
+                });
+            }
+
+            window.onload = fillContentTechnologies;
         </script>
     </body>
 </html>
