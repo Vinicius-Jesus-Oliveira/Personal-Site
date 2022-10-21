@@ -339,18 +339,18 @@ main section {
     flex-direction: column;
 }
 
-#carousel > div:not(#buttons) {
+#carousel > #imagesDiv {
     display: flex;
     margin: 0 2rem;
 }
 
-#carousel > div:not(#buttons)  > div{
+#carousel > #imagesDiv  > div{
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-#carousel > div:not(#buttons) button {
+#carousel > #imagesDiv button {
     background: transparent;
     width: 2rem;
     aspect-ratio: 1/1;
@@ -360,24 +360,79 @@ main section {
     transition: .3s;
 }
 
-#carousel > div:not(#buttons) button:hover {
+#carousel > #imagesDiv button:hover {
     transform: scale(105%);
     background: rgb(80, 80, 80, .1);
 }
 
-#carousel > div:not(#buttons) #images {
+#carousel > #imagesDiv #images {
     flex: 1;
     height: 10rem;
     position: relative;
     overflow: hidden;
 }
 
-#carousel > div:not(#buttons) #images img {
+#carousel > #imagesDiv #images img {
     height: 100%;
     position: absolute;
     left: 125%;
     transform: translateX(-50%);
     transition: 1s;
+}
+
+#carousel #techDescriptions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: .75rem;
+    font-size: 1.2rem;
+}
+
+#carousel #techDescriptions p {
+    text-align: center;
+}
+
+#carousel #techDescriptions > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: .5rem;
+}
+
+#carousel #techDescriptions > div span {
+    margin-right: .5rem;
+}
+
+#carousel #techDescriptions > div > div {
+    position: relative;
+    display: grid;
+    place-items: center;
+    margin: 0 .2rem;
+}
+
+#carousel #techDescriptions > div > div img {
+    height: 1.75rem;
+    aspect-ratio: 1/1;
+    margin: 0 .25rem;
+    transition: .75s;
+}
+
+#carousel #techDescriptions > div > div img:last-child {
+    position: absolute;
+    height: 4rem;
+    transform: rotate(300deg);
+    filter: opacity(0);
+    transition: 0.75s;
+}
+
+#carousel #techDescriptions > div > div img.show:last-child {
+    height: 2.25rem;
+    transform: rotate(0);
+    filter: opacity(1);
+}
+
+#carousel #buttons button.active div {
+    transform: scale(100%);
 }
 
 #carousel #buttons {
@@ -401,8 +456,11 @@ main section {
     height: 90%;
     aspect-ratio: 1/1;
     border-radius: 50%;
+    background-color: var(--main-color);
+    transform: scale(0);
+    transition: .5s;
 }
 
 #carousel #buttons button.active div {
-    background-color: var(--main-color);
+    transform: scale(100%);
 }
