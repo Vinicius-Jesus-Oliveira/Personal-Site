@@ -80,13 +80,13 @@ function changeImage({ action, specificImg }) {
 }
 
 function createTechSlider() {
-    const divImages = document.querySelector("#technologies #images");
-    const divButtons = document.querySelector("#technologies #buttons");
-    
-    technologiesContent.forEach((img, index) => {
+    const divImages = document.querySelector("#technologies #carousel #images");
+    const divButtons = document.querySelector("#technologies #carousel #buttons");
+
+    technologiesContent.forEach((tech, index) => {
         const imgElement = document.createElement("img");
-        imgElement.alt = img.name + " icon";
-        imgElement.src = img.src;
+        imgElement.alt = tech.name + " icon";
+        imgElement.src = tech.src;
 
         const buttonElement = document.createElement("button");
         buttonElement.onclick = () => changeImage({ specificImg: index });
@@ -94,10 +94,22 @@ function createTechSlider() {
         const divElement = document.createElement("div");
 
         if (index === 0) {
+            const divDescription = document.querySelector("#technologies #carousel #techDescriptions");
+            const stars = Array.from(divDescription.querySelectorAll("div > div > img:last-child"));
+
             imgElement.classList.add("active");
             imgElement.style.left = "50%";
             
             buttonElement.classList.add("active");
+
+            divDescription.querySelector("p").textContent = tech.name;
+            
+            for (let i = 0; i < stars.length; i++) {
+                if (i === tech.knowledge)
+                    break;
+
+                stars[i].classList.add("show");
+            }
         }
 
         buttonElement.appendChild(divElement);
