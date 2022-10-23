@@ -1,4 +1,4 @@
-const imagesContent = [
+const technologiesContent = [
     { knowledge: 2, name: "Javascript", src: "https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/javascript/javascript-original.svg" },
     { knowledge: 2, name: "React.JS", src: "https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/react/react-original-wordmark.svg" },
     { knowledge: 2, name: "React Native", src: "https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/react/react-original.svg" },
@@ -28,7 +28,7 @@ function toggleMenu() {
 }
 
 function changeImage({ action, specificImg }) {
-    const images = Array.from(document.querySelectorAll("#carousel #images img"));
+    const images = Array.from(document.querySelectorAll("#technologies #images img"));
     const currentImgIndex = images.findIndex(i => i.classList.contains("active"));
 
     if (images.length === 1 || currentImgIndex === specificImg)
@@ -39,16 +39,16 @@ function changeImage({ action, specificImg }) {
     const stars = Array.from(document.querySelectorAll("#techDescriptions > div > div img:last-child"));
     const targetIndex = specificImg !== undefined ? specificImg : currentImgIndex + (action === "next" ? 1 : -1);
 
-    const buttons = Array.from(document.querySelectorAll("#carousel #buttons button"));
+    const buttons = Array.from(document.querySelectorAll("#technologies #buttons button"));
     const currentButtonIndex = buttons.findIndex(b => b.classList.contains("active"));
 
     buttons[currentButtonIndex].classList.remove("active");
 
     if (images[targetIndex]) {
-        document.querySelector("#techDescriptions > p").textContent = imagesContent[targetIndex].name;
+        document.querySelector("#techDescriptions > p").textContent = technologiesContent[targetIndex].name;
 
         for (let i = 0; i < stars.length; i++) {
-            if (i < imagesContent[targetIndex].knowledge)
+            if (i < technologiesContent[targetIndex].knowledge)
                 stars[i].classList.add("show");
             else
                 stars[i].classList.remove("show");
@@ -66,7 +66,7 @@ function changeImage({ action, specificImg }) {
     }
     else {
         images[targetIndex] = action === "next" ? images.shift() : images.pop();
-        document.querySelector("#techDescriptions > p").textContent = imagesContent[action === "next" ? 0 : imagesContent.length - 1].name;
+        document.querySelector("#techDescriptions > p").textContent = technologiesContent[action === "next" ? 0 : technologiesContent.length - 1].name;
 
         action === "next" ? images.forEach(img => img.style.left = "125%") : images.forEach(img => img.style.left = "-25%");
         images[targetIndex].style.left = "50%";
@@ -79,11 +79,11 @@ function changeImage({ action, specificImg }) {
     }
 }
 
-function fillContentTechnologies() {
-    const divImages = document.querySelector("#carousel #images");
-    const divButtons = document.querySelector("#carousel #buttons");
+function createTechSlider() {
+    const divImages = document.querySelector("#technologies #images");
+    const divButtons = document.querySelector("#technologies #buttons");
     
-    imagesContent.forEach((img, index) => {
+    technologiesContent.forEach((img, index) => {
         const imgElement = document.createElement("img");
         imgElement.alt = img.name + " icon";
         imgElement.src = img.src;
@@ -107,4 +107,56 @@ function fillContentTechnologies() {
     });
 }
 
-window.onload = fillContentTechnologies;
+function createTechList() {
+    const divTechs = document.querySelector("#technologies #list #techs");
+    
+    technologiesContent.forEach((tech, index) => {
+        const divElement = document.createElement("div");
+
+        const techImg = document.createElement("img");
+        techImg.alt = tech.name + " icon";
+        techImg.src = tech.src;
+
+        const techSpan = document.createElement("span");
+        techSpan.textContent = tech.name;
+
+        const starsDiv = document.createElement("div");
+        
+        const stars = [
+            document.createElement("img"),
+            document.createElement("img"),
+            document.createElement("img")
+        ]
+        
+        for (let i = 0; i < stars.length; i++) {
+            if (i < tech.knowledge) {
+                stars[i].alt = "Estrela";
+                stars[i].src = "./assets/star.png";
+            }
+            else {
+                stars[i].alt = "Estrela vazia";
+                stars[i].src = "./assets/empty star.png";
+            }
+
+            starsDiv.appendChild(stars[i]);
+        }
+
+        divElement.appendChild(techImg);
+        divElement.appendChild(techSpan);
+        divElement.appendChild(starsDiv);
+
+        divTechs.appendChild(divElement);
+    });
+}
+
+function changeTechnologiesView(option) {
+    document.querySelector("#technologies > .show").classList.remove("show");
+    document.querySelector("#technologies #" + option).classList.add("show");
+}
+
+function createContent() {
+    createTechSlider();
+    createTechList();
+}
+
+window.onload = createContent;

@@ -79,39 +79,58 @@
                     <img src="./assets/code icon.png" alt="ícone de tecnologias">
                 </div>
                 
-                <div id="carousel">
-                    <div id="imagesDiv">
-                        <div> <button id="previous" onclick="changeImage({ action: 'previous'})"><</button> </div>
-                        <div id="images"></div>
-                        <div> <button id="next" onclick="changeImage({ action: 'next'})">></button> </div>
-                    </div>
-
-                    <div id="techDescriptions">
-                        <p>Javascript</p>
-                        <div>
-                            <span>Conhecimento:</span>
+                <div id="technologies">
+                    <div id="carousel" class="show">
+                        <div id="imagesDiv">
+                            <div> <button id="previous" onclick="changeImage({ action: 'previous'})"><</button> </div>
+                            <div id="images"></div>
+                            <div> <button id="next" onclick="changeImage({ action: 'next'})">></button> </div>
+                        </div>
+    
+                        <div id="techDescriptions">
+                            <p>Javascript</p>
                             <div>
-                                <img src="./assets/empty star.png" alt="Estrela vazia">
-                                <img class="show" src="./assets/star.png" alt="Estrela">
-                            </div>
-                            <div>
-                                <img src="./assets/empty star.png" alt="Estrela vazia">
-                                <img class="show" src="./assets/star.png" alt="Estrela">
-                            </div>
-                            <div>
-                                <img src="./assets/empty star.png" alt="Estrela vazia">
-                                <img src="./assets/star.png" alt="Estrela">
+                                <span>Competência:</span>
+                                <div>
+                                    <img src="./assets/empty star.png" alt="Estrela vazia">
+                                    <img class="show" src="./assets/star.png" alt="Estrela">
+                                </div>
+                                <div>
+                                    <img src="./assets/empty star.png" alt="Estrela vazia">
+                                    <img class="show" src="./assets/star.png" alt="Estrela">
+                                </div>
+                                <div>
+                                    <img src="./assets/empty star.png" alt="Estrela vazia">
+                                    <img src="./assets/star.png" alt="Estrela">
+                                </div>
                             </div>
                         </div>
+    
+                        <div id="buttons"></div>
                     </div>
 
-                    <div id="buttons"></div>
+                    <div id="list">
+                        <div id="description">
+                            <span>Tecnologia</span>
+                            <span>Competência</span>
+                        </div>
+
+                        <div id="techs"></div>
+                    </div>
                 </div>
             </section>
         </main>
 
         <aside id="menu">
             <div> <button onclick="toggleMenu()" id="closeModal">X</button> </div>
+
+            <div id="technologiesView">
+                <p>Visualização das tecnologias</p>
+                <select name="technologiesView" id="technologiesView" onchange="changeTechnologiesView(this.value)">
+                    <option value="slide">Carrosel</option>
+                    <option value="list">Lista</option>
+                </select>
+            </div>
 
             <div id="language">
                 <p>Idioma</p>
