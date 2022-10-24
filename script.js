@@ -175,5 +175,11 @@ function modal({ icon, title, text, html }) {
 window.onload = () => {
     createTechSlider();
     createTechList();
+
+    if (window.innerWidth < 700) {
+        document.querySelector("#technologiesView select").value = "list";
+        changeTechnologiesView("list");
+    }
+
     modal({ icon: "warning", title: "Website em desenvolvimento!", text: "Suas funções e/ou responsividade podem não funcionar corretamente." });
 };
