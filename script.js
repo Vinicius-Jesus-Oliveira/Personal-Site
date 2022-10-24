@@ -122,7 +122,7 @@ function createTechSlider() {
 function createTechList() {
     const divTechs = document.querySelector("#technologies #list #techs");
     
-    technologiesContent.forEach((tech, index) => {
+    technologiesContent.forEach((tech) => {
         const divElement = document.createElement("div");
 
         const techImg = document.createElement("img");
@@ -166,9 +166,12 @@ function changeTechnologiesView(option) {
     document.querySelector("#technologies #" + option).classList.add("show");
 }
 
-function createContent() {
-    createTechSlider();
-    createTechList();
+function modal({ icon, title, text, html }) {
+    Swal.fire({ icon, title, text, html });
 }
 
-window.onload = createContent;
+window.onload = () => {
+    createTechSlider();
+    createTechList();
+    modal({ icon: "warning", title: "Website em desenvolvimento!", text: "Suas funções e/ou responsividade podem não funcionar corretamente." });
+};
