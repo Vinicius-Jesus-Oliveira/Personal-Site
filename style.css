@@ -17,7 +17,12 @@ button {
 
 nav {
     background-color: var(--main-color);
-    padding: .75rem 3rem;
+    padding: .5rem 2.5rem;
+    display: flex;
+}
+
+nav > div {
+    flex: 1;
     display: flex;
 }
 
@@ -29,6 +34,7 @@ nav div button {
     padding: .5rem 1rem;
     cursor: pointer;
     font-size: 1.1rem;
+    margin-right: 10%;
     transition: .25s;
 }
 
@@ -36,11 +42,6 @@ nav div button:hover {
     background: var(--secondary-color);
     color: var(--main-color);
     transform: scale(105%);
-}
-
-nav > * {
-    display: flex;
-    flex: 1;
 }
 
 #myName {
@@ -59,7 +60,7 @@ nav > * {
 #socialmedia a {
     position: relative;
     list-style: none;
-    margin: 0 20px;
+    margin: 0 1rem;
     cursor: pointer;
     transition: .3s;
 }
@@ -104,29 +105,6 @@ svg[data-fa-pseudo-element=":before"]
 {
     clip: rect(0px, 10rem, 6rem, 0px);
     height: 2rem;
-}
-
-#socialmedia a:hover > .linha .cor
-{
-    top: 100%;
-}
-
-.linha
-{
-    height: 115%;
-    margin-top: -15%;
-    width: 100%;
-    position: absolute;
-}
-
-.linha .cor 
-{
-    width: 100%;
-    height: .25rem;
-    background-color: #FFFFFF;
-    position: absolute;
-    top: 0;
-    transition: 0.4s;
 }
 
 .instagram::before
@@ -331,10 +309,6 @@ main section {
     margin-right: 1rem;
 }
 
-#technologies {
-    display: flex;
-}
-
 #technologies > div {
     display: none;
     flex-direction: column;
@@ -381,9 +355,9 @@ main section {
 #technologies #carousel > #imagesDiv #images img {
     height: 100%;
     position: absolute;
-    left: 125%;
+    left: 150%;
     transform: translateX(-50%);
-    transition: 1s;
+    transition: .75s;
 }
 
 #technologies #carousel #techDescriptions {
@@ -437,14 +411,13 @@ main section {
     filter: opacity(1);
 }
 
-#technologies #carousel #buttons button.active div {
-    transform: scale(100%);
-}
-
 #technologies #carousel #buttons {
-    margin-top: 1rem;
     display: flex;
-    justify-content: center;
+    overflow: auto;
+    width: -moz-fit-content;
+    width: fit-content;
+    max-width: 100%;
+    margin: 1rem auto 0;
 }
 
 #technologies #carousel #buttons button {
@@ -530,4 +503,11 @@ main section {
     flex: 1;
     justify-content: flex-end;
     margin-right: 2.5rem;
+}
+
+@media screen and (max-width: 800px) {
+    nav {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
 }

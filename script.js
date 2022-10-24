@@ -55,9 +55,9 @@ function changeImage({ action, specificImg }) {
         }
 
         if (specificImg > currentImgIndex || action === "next")
-            images[currentImgIndex].style.left = "-25%";
+            images[currentImgIndex].style.left = "-50%";
         else
-            images[currentImgIndex].style.left = "125%";
+            images[currentImgIndex].style.left = "150%";
 
         images[targetIndex].style.left = "50%";
         images[targetIndex].classList.add("active");
@@ -68,7 +68,7 @@ function changeImage({ action, specificImg }) {
         images[targetIndex] = action === "next" ? images.shift() : images.pop();
         document.querySelector("#techDescriptions > p").textContent = technologiesContent[action === "next" ? 0 : technologiesContent.length - 1].name;
 
-        action === "next" ? images.forEach(img => img.style.left = "125%") : images.forEach(img => img.style.left = "-25%");
+        action === "next" ? images.forEach(img => img.style.left = "150%") : images.forEach(img => img.style.left = "-50%");
         images[targetIndex].style.left = "50%";
         images[targetIndex].classList.add("active");
 
