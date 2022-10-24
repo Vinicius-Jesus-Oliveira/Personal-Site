@@ -8,7 +8,24 @@
 body {
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* width */
+body::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: var(--secondary-color);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: var(--main-color);
+    border-radius: 1rem;
 }
 
 button {
@@ -42,6 +59,16 @@ nav div button:hover {
     background: var(--secondary-color);
     color: var(--main-color);
     transform: scale(105%);
+}
+
+footer {
+    margin-top: 3rem;
+    min-height: 3rem;
+    width: 100%;
+    background: var(--main-color);
+    padding: 1rem .5rem;
+    color: var(--secondary-color);
+    text-align: center;
 }
 
 #myName {
@@ -163,16 +190,17 @@ svg[data-fa-pseudo-element=":before"][data-icon="github"]
 main {
     width: 75%;
     margin: 0 auto;
+    flex: 1;
 }
 
 main section {
-    margin: 3rem 0;
+    margin-top: 2rem;
 }
 
 .title {
     text-align: center;
     font-weight: 300;
-    font-size: 2em;
+    font-size: 2rem;
     margin-bottom: 1rem;
 }
 
@@ -418,6 +446,12 @@ main section {
     width: fit-content;
     max-width: 100%;
     margin: 1rem auto 0;
+    padding-bottom: .25rem;
+}
+
+/* width */
+#technologies #carousel #buttons::-webkit-scrollbar {
+    height: 6px;
 }
 
 #technologies #carousel #buttons button {
@@ -509,5 +543,19 @@ main section {
     nav {
         padding-left: 1.5rem;
         padding-right: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    main {
+        width: 90%;
+    }
+
+    .title {
+        font-size: 1.5rem;
+    }
+
+    #technologiesTitle img {
+        height: 1.75rem;
     }
 }
