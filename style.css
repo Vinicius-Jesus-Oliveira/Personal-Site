@@ -34,31 +34,16 @@ button {
 
 nav {
     background-color: var(--main-color);
-    padding: .5rem 2.5rem;
+    padding: .25rem 2rem;
     display: flex;
+    position: sticky;
+    top: 0;
+    z-index: 1;
 }
 
 nav > div {
     flex: 1;
     display: flex;
-}
-
-nav div button {
-    background: transparent;
-    border: 1px solid var(--secondary-color);
-    border-radius: .25rem;
-    color: var(--secondary-color);
-    padding: .5rem 1rem;
-    cursor: pointer;
-    font-size: 1.1rem;
-    margin-right: 10%;
-    transition: .25s;
-}
-
-nav div button:hover {
-    background: var(--secondary-color);
-    color: var(--main-color);
-    transform: scale(105%);
 }
 
 footer {
@@ -76,115 +61,21 @@ footer {
     color: #FFFFFF;
 }
 
-#socialmedia {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-}
-
-#socialmedia a {
-    position: relative;
-    list-style: none;
-    margin: 0 1rem;
-    cursor: pointer;
-    transition: .3s;
-}
-
-#socialmedia > a:hover {
-    transform: scale(110%);
-}
-
-#socialmedia a span {
-    text-decoration: none;
-    z-index: 1;
-}
-
-#socialmedia a span svg {
-    font-size: 2rem !important;
-    color: white !important;
-}
-
-#socialmedia a:before
-{
-    font-family: "Font Awesome 5 Brands";
-    font-weight: 900;
-    position: relative;
-    top: 0; left: 0;
-    font-size: 2rem !important;
-    color: red;
-    display: none;
-}
-
-svg[data-fa-pseudo-element=":before"]
-{
-    height: 2rem;
-    overflow: hidden !important;
-    position: absolute;
-    top: 0; left: 0;
-    width: 100% !important;
-    transition: 0.4s;
-    clip: rect(0px, 10rem, 0px, 0px);
-}
-
-#socialmedia a:hover > svg[data-fa-pseudo-element=":before"]
-{
-    clip: rect(0px, 10rem, 6rem, 0px);
-    height: 2rem;
-}
-
-.instagram::before
-{
-    content: "\f16d";
-}
-
-.linkedin::before
-{
-    content: "\f08c";
-}
-
-.google::before
-{
-    content: "\f1a0";
-}
-
-.github::before
-{
-    content: "\f09b";
-}
-
-svg[data-fa-pseudo-element=":before"][data-icon="instagram"]
-{
-    color: #0F0E0E;
-}
-
-svg[data-fa-pseudo-element=":before"][data-icon="linkedin"]
-{
-    color: #0F0E0E;
-}
-
-svg[data-fa-pseudo-element=":before"][data-icon="google"]
-{
-    color: #0F0E0E;
-}
-
-svg[data-fa-pseudo-element=":before"][data-icon="github"]
-{
-    color: #0F0E0E;
-}
-
 #settings {
     justify-content: flex-end;
 }
 
 #settings > button {
-    background-color: transparent;
+    background: transparent;
     border: none;
-    cursor: pointer;
-    color: #FFFFFF;
-    transition: 0.3s;
+    color: var(--secondary-color);
+    transition: 0.25s;
     padding: .25rem;
+    font-size: 1.1rem;
+}
+
+#settings > button:hover {
+    transform: scale(105%);
 }
 
 main {
@@ -195,6 +86,10 @@ main {
 
 main section {
     margin-top: 2rem;
+}
+
+main section + section {
+    margin-top: 3.5rem;
 }
 
 .title {
@@ -211,13 +106,14 @@ main section {
 
 #menu {
     background: var(--secondary-color);
-    position: absolute;
+    position: fixed;
     top: 0;
     bottom: 0;
     right: 0;
     width: 0;
     max-width: 500px;
     min-width: 0;
+    z-index: 2;
     display: flex;
     flex-direction: column;
     border-left: 0 solid rgb(0, 0, 0, .75);
@@ -539,11 +435,88 @@ main section {
     margin-right: 2.5rem;
 }
 
-@media screen and (max-width: 800px) {
-    nav {
-        padding-left: 1.5rem;
-        padding-right: 1.5rem;
-    }
+#socialmedia {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+#socialmedia a {
+    position: relative;
+    list-style: none;
+    margin: 0 1rem;
+    cursor: pointer;
+    transition: .3s;
+}
+
+#socialmedia > a:hover {
+    transform: scale(110%);
+}
+
+#socialmedia a span {
+    text-decoration: none;
+    z-index: 1;
+}
+
+#socialmedia a span svg {
+    font-size: 3.5rem !important;
+    color: #0F0E0E !important;
+}
+
+#socialmedia a:before
+{
+    font-family: "Font Awesome 5 Brands";
+    font-weight: 900;
+    position: relative;
+    top: 0;
+    left: 0;
+    font-size: 3.5rem !important;
+    display: none;
+}
+
+svg[data-fa-pseudo-element=":before"]
+{
+    height: 3.5rem;
+    overflow: hidden !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    transition: 0.5s;
+    clip: rect(0px, 10rem, 0px, 0px);
+}
+
+#socialmedia a:hover > svg[data-fa-pseudo-element=":before"]
+{
+    clip: rect(0px, 10rem, 6rem, 0px);
+    height: 3.5rem;
+}
+
+.instagram::before
+{
+    content: "\f16d";
+}
+
+.linkedin::before
+{
+    content: "\f08c";
+}
+
+.google::before
+{
+    content: "\f1a0";
+}
+
+.github::before
+{
+    content: "\f09b";
+}
+
+svg[data-fa-pseudo-element=":before"]
+{
+    color: var(--main-color);
 }
 
 @media screen and (max-width: 500px) {
@@ -557,5 +530,9 @@ main section {
 
     #technologiesTitle img {
         height: 1.75rem;
+    }
+
+    #socialmedia a {
+        margin: 0 .5rem;
     }
 }

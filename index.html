@@ -19,30 +19,48 @@
         <nav>
             <div><h3 id="myName">Vinicius Oliveira</h3></div>
 
-            <div id="socialmedia">
-                <a class="instagram" href="https://www.instagram.com/vini.oliveira._/" target="_blank">
-                    <span> <i class="fab fa-instagram"></i> </span>
-                </a>
-                
-                <a class="linkedin" href="https://www.linkedin.com/in/vinicius-oliveira-406163209" target="_blank">
-                    <span> <i class="fab fa-linkedin"></i> </span>
-                </a>
-                
-                <a class="google" href="https://g.dev/vinicius-jesus-oliveira" target="_blank">
-                    <span> <i class="fab fa-google"></i> </span>
-                </a>
-                
-                <a class="github" href="https://github.com/Vinicius-Jesus-Oliveira" target="_blank">
-                    <span> <i class="fab fa-github"></i> </span>
-                </a>
-            </div>
-
             <div id="settings">
                 <button type="button" title="settings" onclick="toggleMenu()">
                     <i class="fa-solid fa-gear fa-lg"></i>
                 </button>
             </div>
         </nav>
+
+        <aside id="menu">
+            <div> <button onclick="toggleMenu()" id="closeModal">X</button> </div>
+
+            <div id="technologiesView">
+                <p>Visualização das tecnologias</p>
+                <select name="technologiesView" onchange="changeTechnologiesView(this.value)">
+                    <option value="carousel">Carrosel</option>
+                    <option value="list">Lista</option>
+                </select>
+            </div>
+
+            <div id="language">
+                <p>Idioma</p>
+                <select name="language">
+                    <option value="pt-br">Português</option>
+                </select>
+            </div>
+
+            <div id="theme">
+                <p>Tema</p>
+                <div>
+                    <button id="light">
+                        <div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </button>
+
+                    <button id="dark">
+                        <div></div>
+                        <div></div>
+                    </button>
+                </div>
+            </div>
+        </aside>
 
         <main>
             <section>
@@ -103,43 +121,29 @@
                     </div>
                 </div>
             </section>
+
+            <section>
+                <h1 class="title">💬 Redes Sociais 💬</h1>
+            </section>
+
+            <div id="socialmedia">
+                <a class="instagram" href="https://www.instagram.com/vini.oliveira._/" target="_blank">
+                    <span> <i class="fab fa-instagram"></i> </span>
+                </a>
+                
+                <a class="linkedin" href="https://www.linkedin.com/in/vinicius-oliveira-406163209" target="_blank">
+                    <span> <i class="fab fa-linkedin"></i> </span>
+                </a>
+                
+                <a class="google" href="https://g.dev/vinicius-jesus-oliveira" target="_blank">
+                    <span> <i class="fab fa-google"></i> </span>
+                </a>
+                
+                <a class="github" href="https://github.com/Vinicius-Jesus-Oliveira" target="_blank">
+                    <span> <i class="fab fa-github"></i> </span>
+                </a>
+            </div>
         </main>
-
-        <aside id="menu">
-            <div> <button onclick="toggleMenu()" id="closeModal">X</button> </div>
-
-            <div id="technologiesView">
-                <p>Visualização das tecnologias</p>
-                <select name="technologiesView" onchange="changeTechnologiesView(this.value)">
-                    <option value="carousel">Carrosel</option>
-                    <option value="list">Lista</option>
-                </select>
-            </div>
-
-            <div id="language">
-                <p>Idioma</p>
-                <select name="language">
-                    <option value="pt-br">Português</option>
-                </select>
-            </div>
-
-            <div id="theme">
-                <p>Tema</p>
-                <div>
-                    <button id="light">
-                        <div>
-                            <div></div>
-                            <div></div>
-                        </div>
-                    </button>
-
-                    <button id="dark">
-                        <div></div>
-                        <div></div>
-                    </button>
-                </div>
-            </div>
-        </aside>
 
         <footer>
             <p>Vinicius de Jesus Oliveira</p>
