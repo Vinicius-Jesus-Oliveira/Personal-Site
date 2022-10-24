@@ -89,6 +89,8 @@ function createTechSlider() {
         imgElement.src = tech.src;
 
         const buttonElement = document.createElement("button");
+        buttonElement.type = "button";
+        buttonElement.title = tech.name + " button";
         buttonElement.onclick = () => changeImage({ specificImg: index });
 
         const divElement = document.createElement("div");
