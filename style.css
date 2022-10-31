@@ -503,6 +503,79 @@ main section + section {
     margin-right: 2.5rem;
 }
 
+#portfolio {
+    width: 100%;
+    padding: .25rem 2rem;
+}
+
+#portfolio .project {
+    width: 100%;
+    padding: .25rem 1rem;
+    border-radius: .5rem;
+    border: 1px solid var(--secondary-color);
+    display: flex;
+    position: relative;
+}
+
+#portfolio .project + .project {
+    margin-top: 1.5rem;
+}
+
+#portfolio .project > button:last-child {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(1rem, -.75rem);
+    padding: .5rem .75rem;
+    background-color: var(--secondary-color);
+    color: var(--main-color);
+    border: 1px solid var(--main-color);
+    border-radius: .5rem;
+    font-size: 1.1rem;
+    transition: .3s;
+}
+
+#portfolio .project > button:last-child:hover {
+    transform: translate(1rem, -.75rem) scale(110%);
+}
+
+#portfolio .project > div:first-child {
+    padding: .25rem;
+    height: 10rem;
+    aspect-ratio: 1/1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#portfolio .project > div:first-child > img {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+#portfolio .project > div:last-of-type {
+    padding: .5rem 0;
+    display: flex;
+    flex-direction: column;
+}
+
+#portfolio .project > div:last-of-type > p:first-child {
+    font-size: 1.25rem;
+    margin-bottom: .5rem;
+}
+
+#portfolio .project .project-technologies {
+    display: flex;
+    flex: 1;
+    align-items: flex-end;
+    font-size: 1rem !important;
+    gap: .75rem;
+}
+
+#portfolio .project .project-technologies p:first-child {
+    font-weight: bold;
+}
+
 #socialmedia {
     flex: 1;
     display: flex;
@@ -585,6 +658,53 @@ svg[data-fa-pseudo-element=":before"]
 svg[data-fa-pseudo-element=":before"]
 {
     color: var(--main-color);
+}
+
+#modal {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgb(0, 0, 0, .5);
+    display: grid;
+    place-items: center;
+    filter: opacity(0);
+    z-index: -1;
+    transition: .3s;
+}
+
+#modal.show {
+    z-index: 3;
+    filter: opacity(100%);
+}
+
+#modal > div {
+    height: 80%;
+    width: 75%;
+    border-radius: .5rem;
+    background-color: var(--primary-color);
+    box-shadow: 0 0 4px 1px var(--secondary-color);
+    display: flex;
+    flex-direction: column;
+}
+
+#modal > div #close-modal {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#modal > div #close-modal button {
+    font-size: 1.25rem;
+    padding: .5rem 1rem;
+    background: transparent;
+    color: var(--primary-text-color);
+    border: none;
+    transition: .25s;
+}
+
+#modal > div #close-modal button:hover {
+    transform: scale(110%);
 }
 
 @media screen and (max-width: 500px) {

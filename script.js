@@ -29,6 +29,21 @@ const themeColors = [
     { title: "Tema azul claro", color: "#53b4f5" },
 ];
 
+const portfolioProjects = [
+    {
+        title: "DivinoTicket Validator",
+        description: [
+            "Aplicativo feito para validar ingressos de shows e atrações, através de QR Code ou pesquisa do ID ou nome do ingresso.",
+            "Com uma lógica de validação local (offline), e sincronização com o servidor em background."
+        ],
+        technologies: [
+            "React Native",
+            "Expo"
+        ],
+        imagesPath: "./assets/validator app/"
+    },
+];
+
 function toggleMenu() {
     document.getElementById("menu").classList.toggle("open");
 }
@@ -265,10 +280,82 @@ function changeMainColor(button) {
     document.documentElement.style.setProperty("--main-color", button.dataset.color);
 }
 
+function toggleModal() {
+    document.getElementById("modal").classList.toggle("show");
+}
+
+function createPortfolioProjects() {
+    const portfolioDiv = document.getElementById("portfolio");
+
+    portfolioProjects.forEach((project) => {
+        const div = document.createElement("div");
+        div.classList.add("project");
+
+        const imageDiv = document.createElement("div");
+
+        const image = document.createElement("img");
+        image.src = project.imagesPath + "1.webp";
+        image.alt = "Imagem demonstrativa do projeto";
+        
+        imageDiv.appendChild(image);
+
+        const descriptionDiv = document.createElement("div");
+
+        const titleP = document.createElement("p");
+        titleP.textContent = project.title;
+
+        descriptionDiv.appendChild(titleP);
+        
+        project.description.forEach((desc) => {
+            const descP = document.createElement("p");
+            descP.textContent = desc;
+    
+            descriptionDiv.appendChild(descP);
+        });
+
+        const techs = document.createElement("div");
+        techs.classList.add("project-technologies");
+
+        const techsTitleP = document.createElement("p");
+        techsTitleP.textContent = "Tecnologias:";
+
+        techs.appendChild(techsTitleP);
+
+        project.technologies.forEach((tech, index) => {
+            if (index !== 0) {
+                const separatorSpan = document.createElement("span");
+                separatorSpan.textContent = "-";
+
+                techs.appendChild(separatorSpan);
+            }
+
+            const techSpan = document.createElement("span");
+            techSpan.textContent = tech;
+
+            techs.appendChild(techSpan);
+        });
+
+        descriptionDiv.appendChild(techs);
+
+        const seeMoreButton = document.createElement("button");
+        seeMoreButton.type = "button";
+        seeMoreButton.title = "Ver mais";
+        seeMoreButton.onclick = toggleModal;
+        seeMoreButton.textContent = "Ver mais";
+
+        div.appendChild(imageDiv);
+        div.appendChild(descriptionDiv);
+        div.appendChild(seeMoreButton);
+
+        portfolioDiv.appendChild(div);
+    });
+}
+
 window.onload = () => {
     createTechSlider();
     createTechList();
     createColorThemes();
+    createPortfolioProjects();
 
     if (window.innerWidth < 700) {
         document.querySelector("#technologiesView select").value = "list";
@@ -276,6 +363,13 @@ window.onload = () => {
     }
 
     document.querySelector("#darkMode input").addEventListener("change", changeColorMode);
+
+    document.getElementById("modal").addEventListener("click", function(e) {
+        if (e.target !== this)
+            return;
+
+        toggleModal();
+    });
 
     modal({ icon: "warning", title: "Website em desenvolvimento!", text: "Suas funções e/ou responsividade podem não funcionar corretamente." });
 };
