@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="./libs/icons.css"/>
         <script src="https://kit.fontawesome.com/1d25e2ad24.js" crossorigin="anonymous"></script>
+        <link rel="icon" href="./assets/code icon.png">
         <title>Vinicius Oliveira</title>
 
         <script>
@@ -27,38 +28,34 @@
         </nav>
 
         <aside id="menu">
-            <div> <button onclick="toggleMenu()" id="closeModal">X</button> </div>
+            <div> <button type="button" onclick="toggleMenu()" id="closeModal">X</button> </div>
 
             <div id="technologiesView">
-                <p>Visualização das tecnologias</p>
-                <select name="technologiesView" onchange="changeTechnologiesView(this.value)">
+                <label for="technologiesView">Visualização das tecnologias</label>
+                <select name="technologiesView" onchange="changeTechnologiesView(this.value)" title="Mudar visualização de tecnologias">
                     <option value="carousel">Carrosel</option>
                     <option value="list">Lista</option>
                 </select>
             </div>
 
             <div id="language">
-                <p>Idioma</p>
-                <select name="language">
+                <label for="language">Idioma</label>
+                <select name="language" title="Mudar idioma">
                     <option value="pt-br">Português</option>
                 </select>
             </div>
 
-            <div id="theme">
-                <p>Tema</p>
-                <div>
-                    <button id="light">
-                        <div>
-                            <div></div>
-                            <div></div>
-                        </div>
-                    </button>
+            <div id="principalColor">
+                <p>Cor principal</p>
+                <div></div>
+            </div>
 
-                    <button id="dark">
-                        <div></div>
-                        <div></div>
-                    </button>
-                </div>
+            <div id="darkMode">
+                <span>Tema escuro:</span>
+                <label>
+                    <input type="checkbox" name="darkMode" title="Dark mode" checked />
+                    <div></div>
+                </label>
             </div>
         </aside>
 
@@ -76,17 +73,17 @@
             
             <section>
                 <div id="technologiesTitle">
-                    <img src="./assets/code icon.png" alt="ícone de tecnologias">
+                    <img src="./assets/code icon dark mode.png" alt="ícone de tecnologias">
                     <h1 class="title">Tecnologias</h1>
-                    <img src="./assets/code icon.png" alt="ícone de tecnologias">
+                    <img src="./assets/code icon dark mode.png" alt="ícone de tecnologias">
                 </div>
                 
                 <div id="technologies">
                     <div id="carousel" class="show">
                         <div id="imagesDiv">
-                            <div> <button id="previous" onclick="changeImage({ action: 'previous'})"><</button> </div>
+                            <div> <button type="button" id="previous" onclick="changeImage({ action: 'previous'})"><</button> </div>
                             <div id="images"></div>
-                            <div> <button id="next" onclick="changeImage({ action: 'next'})">></button> </div>
+                            <div> <button type="button" id="next" onclick="changeImage({ action: 'next'})">></button> </div>
                         </div>
     
                         <div id="techDescriptions">
@@ -94,15 +91,15 @@
                             <div>
                                 <span>Competência:</span>
                                 <div>
-                                    <img src="./assets/empty star.png" alt="Estrela vazia">
+                                    <img src="./assets/empty star dark mode.png" alt="Estrela vazia">
                                     <img src="./assets/star.png" alt="Estrela">
                                 </div>
                                 <div>
-                                    <img src="./assets/empty star.png" alt="Estrela vazia">
+                                    <img src="./assets/empty star dark mode.png" alt="Estrela vazia">
                                     <img src="./assets/star.png" alt="Estrela">
                                 </div>
                                 <div>
-                                    <img src="./assets/empty star.png" alt="Estrela vazia">
+                                    <img src="./assets/empty star dark mode.png" alt="Estrela vazia">
                                     <img src="./assets/star.png" alt="Estrela">
                                 </div>
                             </div>
@@ -127,19 +124,19 @@
             </section>
 
             <div id="socialmedia">
-                <a class="instagram" href="https://www.instagram.com/vini.oliveira._/" target="_blank">
+                <a title="Link para instagram" class="instagram" href="https://www.instagram.com/vini.oliveira._/" target="_blank">
                     <span> <i class="fab fa-instagram"></i> </span>
                 </a>
                 
-                <a class="linkedin" href="https://www.linkedin.com/in/vinicius-oliveira-406163209" target="_blank">
+                <a title="Link para linkedin" class="linkedin" href="https://www.linkedin.com/in/vinicius-oliveira-406163209" target="_blank">
                     <span> <i class="fab fa-linkedin"></i> </span>
                 </a>
                 
-                <a class="google" href="https://g.dev/vinicius-jesus-oliveira" target="_blank">
+                <a title="Link para google" class="google" href="https://g.dev/vinicius-jesus-oliveira" target="_blank">
                     <span> <i class="fab fa-google"></i> </span>
                 </a>
                 
-                <a class="github" href="https://github.com/Vinicius-Jesus-Oliveira" target="_blank">
+                <a title="Link para github" class="github" href="https://github.com/Vinicius-Jesus-Oliveira" target="_blank">
                     <span> <i class="fab fa-github"></i> </span>
                 </a>
             </div>

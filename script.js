@@ -23,6 +23,11 @@ const technologiesContent = [
     { knowledge: 2, name: "SQLite", src: "https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/sqlite/sqlite-original.svg" }
 ];
 
+const themeColors = [
+    { title: "Tema vermelho", color: "#c40000" },
+    { title: "Tema roxo claro", color: "#6900cc" },
+];
+
 function toggleMenu() {
     document.getElementById("menu").classList.toggle("open");
 }
@@ -172,14 +177,104 @@ function modal({ icon, title, text, html }) {
     Swal.fire({ icon, title, text, html });
 }
 
+function changeColorMode(option) {
+    if (option === "light") {
+
+    }
+    else if (option === "dark") {
+        const images = Array.from(document.querySelectorAll("#technologiesTitle img"));
+
+        images.forEach(img => {
+            const dotIndex = img.src.lastIndexOf(".");
+            img.src = img.src.slice(0, dotIndex) + "dark mode" + img.src.slice(dotIndex);
+        });
+    }
+}
+
+function removeDarkModeOfImg(img) {
+    img.src = img.src.replace("%20dark%20mode", "");
+}
+
+function addDarkModeToImg(img) {
+    const lastDotIndex = img.src.lastIndexOf(".");
+
+    img.src = img.src.slice(0, lastDotIndex) + " dark mode" + img.src.slice(lastDotIndex);
+}
+
+function changeColorMode(e) {
+    const theme = e.target.checked ? "dark" : "light";
+
+    let style = getComputedStyle(document.documentElement);
+
+    const white = style.getPropertyValue('--white');
+    const black = style.getPropertyValue('--black');
+    const gray = style.getPropertyValue('--gray');
+    const lightGray = style.getPropertyValue('--light-gray');
+
+    style = document.documentElement.style;
+
+    if (theme === "light") {
+        style.setProperty('--primary-color', white);
+        style.setProperty('--secondary-color', black);
+        style.setProperty('--third-color', lightGray);
+        
+        style.setProperty('--primary-text-color', black);
+        style.setProperty('--secondary-text-color', white);
+    }
+    else {
+        style.setProperty('--primary-color', black);
+        style.setProperty('--secondary-color', white);
+        style.setProperty('--third-color', gray);
+        
+        style.setProperty('--primary-text-color', lightGray);
+        style.setProperty('--secondary-text-color', black);
+    }
+    
+    Array.from(document.querySelectorAll("#technologiesTitle img, #techDescriptions div div img:first-child")).forEach(e.target.checked ? addDarkModeToImg : removeDarkModeOfImg);
+}
+
+function createColorThemes() {
+    const colorsDiv = document.querySelector("#principalColor > div");
+
+    themeColors.forEach((color, index) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.title = color.title;
+        button.dataset.color = color.color;
+        button.onclick = () => changeMainColor(button);
+
+        if (index === 0)
+            button.classList.add("selected");
+
+        const divColor = document.createElement("div");
+        divColor.style.background = color.color;
+
+        button.appendChild(divColor);
+
+        colorsDiv.appendChild(button);
+    });
+}
+
+function changeMainColor(button) {
+    const selectedColor = button.parentNode.querySelector(".selected");
+    selectedColor.classList.remove("selected");
+
+    button.classList.add("selected");
+
+    document.documentElement.style.setProperty("--main-color", button.dataset.color);
+}
+
 window.onload = () => {
     createTechSlider();
     createTechList();
+    createColorThemes();
 
     if (window.innerWidth < 700) {
         document.querySelector("#technologiesView select").value = "list";
         changeTechnologiesView("list");
     }
+
+    document.querySelector("#darkMode input").addEventListener("change", changeColorMode);
 
     modal({ icon: "warning", title: "Website em desenvolvimento!", text: "Suas funções e/ou responsividade podem não funcionar corretamente." });
 };

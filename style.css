@@ -1,15 +1,31 @@
 * { padding: 0; margin: 0; box-sizing: border-box; }
 
 :root {
-    --main-color: rgb(196, 0, 0);
-    --secondary-color: #ffffff;
+    --main-color: #c40000;
+
+    /* principal */
+    --primary-color: #0F0E0E;
+    --secondary-color: #f6f6f6;
+    --third-color: #3a3838;
+
+    --primary-text-color: #f6f6f6;
+    --secondary-text-color: #ffffff;
+
+    /* Colors */
+    --white: #ffffff;
+    --black: #0F0E0E;
+    --gray: #3a3838;
+    --light-gray: #f6f6f6;
 }
 
 body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    background-color: var(--primary-color);
+    color: var(--primary-text-color);
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    transition: .3s;
 }
 
 /* width */
@@ -19,7 +35,7 @@ body::-webkit-scrollbar {
 
 /* Track */
 ::-webkit-scrollbar-track {
-    background: var(--secondary-color);
+    background: var(--primary-color);
 }
 
 /* Handle */
@@ -39,6 +55,7 @@ nav {
     position: sticky;
     top: 0;
     z-index: 1;
+    transition: .5s;
 }
 
 nav > div {
@@ -52,13 +69,13 @@ footer {
     width: 100%;
     background: var(--main-color);
     padding: 1rem .5rem;
-    color: var(--secondary-color);
+    color: var(--primary-color);
     text-align: center;
 }
 
 #myName {
     font-weight: lighter;
-    color: #FFFFFF;
+    color: #fff;
 }
 
 #settings {
@@ -68,7 +85,7 @@ footer {
 #settings > button {
     background: transparent;
     border: none;
-    color: var(--secondary-color);
+    color: var(--primary-color);
     transition: 0.25s;
     padding: .25rem;
     font-size: 1.1rem;
@@ -105,7 +122,7 @@ main section + section {
 }
 
 #menu {
-    background: var(--secondary-color);
+    background: var(--primary-color);
     position: fixed;
     top: 0;
     bottom: 0;
@@ -116,7 +133,9 @@ main section + section {
     z-index: 2;
     display: flex;
     flex-direction: column;
-    border-left: 0 solid rgb(0, 0, 0, .75);
+    border-left: 0 solid var(--secondary-color);
+    color: var(--primary-text-color);
+    font-size: 1.15rem;
     overflow: hidden;
     transition: 1s;
 }
@@ -144,59 +163,109 @@ main section + section {
     cursor: pointer;
 }
 
-#menu > div p {
-    font-size: 1.15rem;
-}
-
-#theme {
+#principalColor {
     margin-top: 2rem;
 }
 
-#theme > div {
+#principalColor > div {
     display: flex;
     flex-direction: row;
     margin-top: .25rem;
 }
 
-#theme > div > button {
+#principalColor > div > button {
     height: 2rem;
     aspect-ratio: 1/1;
     border-radius: 50%;
-    border: 1px solid rgb(0, 0, 0, .25);
+    border: 1px solid var(--primary-text-color);
     display: grid;
     place-items: center;
     background: transparent;
+    position: relative;
     transition: .3s;
 }
 
-#theme > div > button + button {
+#principalColor > div > button::after {
+    content: "";
+    position: absolute;
+    border-right: 2px solid  var(--primary-text-color);
+    border-bottom: 2px solid  var(--primary-text-color);
+    width: .5rem;
+    aspect-ratio: 1/2;
+    transform: rotate(35deg) scale(0);
+    top: 15%;
+    transition: .3s;
+}
+
+#principalColor > div > button.selected::after {
+    transform: rotate(35deg) scale(100%);
+}
+
+#principalColor > div > button + button {
     margin-left: .5rem;
 }
 
-#theme > div > button:hover {
+#principalColor > div > button:hover {
     transform: scale(105%);
 }
 
-#theme button > div {
+#principalColor button > div {
     height: 90%;
     aspect-ratio: 1/1;
     border-radius: 50%;
-    display: flex;
-    overflow: hidden;
-    transform: rotate(25deg);
 }
 
-#theme button > div > div {
-    height: 100%;
-    flex: 1;
+#principalColor button.selected > div {
+    filter: brightness(75%);
+}
+
+#menu #darkMode {
+    flex-direction: row;
+}
+
+#menu #darkMode label {
+    margin-left: .75rem;
+    position: relative;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+}
+
+#menu #darkMode label input {
+    visibility: hidden;
+    position: absolute;
+    height: 0;
+}
+
+#menu #darkMode label div {
+    height: 1.75rem;
+    aspect-ratio: 2/1;
+    border-radius: 2rem;
+    background-color: var(--main-color);
+    transition: .5s;
+}
+
+#menu #darkMode label div::before {
+    content: "";
+    position: absolute;
+    height: 1.25rem;
+    top: .25rem;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    transition: .3s;
+}
+
+#menu #darkMode label input:checked + div::before {
+    left: 1.75rem;
+}
+
+#menu #darkMode label input:not(:checked) + div::before {
+    left: .25rem;
 }
 
 #light > div > div:first-child {
     background: var(--main-color);
-}
-
-#light > div > div:last-child {
-    background: var(--secondary-color);
 }
 
 #closeModal {
@@ -205,7 +274,7 @@ main section + section {
     aspect-ratio: 1/1;
     border: none;
     font-size: 1.25rem;
-    color: rgb(0, 0, 0, .75);
+    color: var(--primary-text-color);
     transition: .3s;
 }
 
@@ -259,9 +328,10 @@ main section + section {
     width: 2rem;
     aspect-ratio: 1/1;
     border-radius: .25rem;
-    border: 1px solid rgb(0, 0, 0, .75);
+    border: 1px solid var(--primary-text-color);
     font-size: 1rem;
     transition: .3s;
+    color: var(--primary-text-color);
 }
 
 #technologies #carousel > #imagesDiv button:hover {
@@ -352,7 +422,7 @@ main section + section {
 
 #technologies #carousel #buttons button {
     background: transparent;
-    border: 1px solid rgb(0, 0, 0, .75);
+    border: 1px solid var(--primary-text-color);
     border-radius: 50%;
     height: 1rem;
     aspect-ratio: 1/1;
@@ -462,7 +532,7 @@ main section + section {
 
 #socialmedia a span svg {
     font-size: 3.5rem !important;
-    color: #0F0E0E !important;
+    color: var(--secondary-color) !important;
 }
 
 #socialmedia a:before
@@ -485,12 +555,12 @@ svg[data-fa-pseudo-element=":before"]
     left: 0;
     width: 100% !important;
     transition: 0.5s;
-    clip: rect(0px, 10rem, 0px, 0px);
+    clip: rect(0, 10rem, 0, 0);
 }
 
 #socialmedia a:hover > svg[data-fa-pseudo-element=":before"]
 {
-    clip: rect(0px, 10rem, 6rem, 0px);
+    clip: rect(0, 10rem, 6rem, 0);
     height: 3.5rem;
 }
 
