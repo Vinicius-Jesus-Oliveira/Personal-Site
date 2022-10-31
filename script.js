@@ -25,7 +25,8 @@ const technologiesContent = [
 
 const themeColors = [
     { title: "Tema vermelho", color: "#c40000" },
-    { title: "Tema roxo claro", color: "#6900cc" },
+    { title: "Tema roxo claro", color: "#8739FA" },
+    { title: "Tema azul claro", color: "#53b4f5" },
 ];
 
 function toggleMenu() {
