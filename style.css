@@ -28,17 +28,14 @@ body {
     transition: .3s;
 }
 
-/* width */
 body::-webkit-scrollbar {
     width: 8px;
 }
 
-/* Track */
 ::-webkit-scrollbar-track {
     background: var(--primary-color);
 }
 
-/* Handle */
 ::-webkit-scrollbar-thumb {
     background: var(--main-color);
     border-radius: 1rem;
@@ -69,8 +66,9 @@ footer {
     width: 100%;
     background: var(--main-color);
     padding: 1rem .5rem;
-    color: var(--primary-color);
+    color: #fff;
     text-align: center;
+    transition: .5s;
 }
 
 #myName {
@@ -448,7 +446,7 @@ main section + section {
     display: flex;
     font-size: 1.25rem;
     padding-bottom: .25rem;
-    border-bottom: 1px solid rgb(0, 0, 0, .25);
+    border-bottom: 1px solid var(--secondary-color);
 }
 
 #technologies #list #description > span {
@@ -485,7 +483,7 @@ main section + section {
     bottom: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(to right, transparent, rgb(0,0,0,.25), transparent);
+    background: linear-gradient(to right, transparent, var(--secondary-color), transparent);
 }
 
 #technologies #list #techs > div img {
