@@ -40,7 +40,17 @@ const portfolioProjects = [
             "React Native",
             "Expo"
         ],
-        imagesPath: "./assets/validator app/"
+        images: [
+            "https://play-lh.googleusercontent.com/GFPAaeQt4HyGWGrDMsVsJuA_tkS1fVCL8RaYXgADChLNpyIVi_Zj4GIhwcWQv_zAdNZD=w2560-h1440-rw",
+            "https://play-lh.googleusercontent.com/yEcDZ_k4PssNCsQlU_1RrJy8EKlnA6XHbD4AL_JzhRp44y9uwzoyObeOLQtb7FWD8Q=w2560-h1440-rw",
+            "https://play-lh.googleusercontent.com/6VUS7LrpyPWfIJ7mmPkC2sw1QpcUwAkbXfeHtAuqk2Ii9cn3U862datmwl1kNKh1VKo=w2560-h1440-rw",
+            "https://play-lh.googleusercontent.com/Tnyb8_LOm5deEh6hVw0yjsT-6Qk7fewhafIt7Mq7_zmZ_UbbwswJ0qxTdPR9vOIrGg=w2560-h1440-rw",
+            "https://play-lh.googleusercontent.com/zGeRweoMJN5Y4dIMkga4Ah5wu4c0gLCYLMtfSm9OE5Gu5d2jyoMUF3iIhhNBlmx8XpM=w2560-h1440-rw",
+            "https://play-lh.googleusercontent.com/nFeruCvKhsEPF3NNkhGpAOmJsbMOu0yniGGqD_kHUR5y1t77phT_mua9drZRjSBBjs8=w2560-h1440-rw",
+            "https://play-lh.googleusercontent.com/BoSAjcn1IazmffZEfwuIbi0TNvwdmwhh5GUW3Vunb-VSp1XbonTpL1RSWexlnk2ZWQ=w2560-h1440-rw",
+            "https://play-lh.googleusercontent.com/YmQL9t1xHCf6QxQtF5LHS96xvkQgbPyWUHCvzqpl0jimF0AtdQodr1Y1rJW3KuV1EdI=w2560-h1440-rw"
+        ],
+        url: "https://play.google.com/store/apps/details?id=com.divinoticket.dtkcheckin"
     },
 ];
 
@@ -287,14 +297,14 @@ function toggleModal() {
 function createPortfolioProjects() {
     const portfolioDiv = document.getElementById("portfolio");
 
-    portfolioProjects.forEach((project) => {
+    portfolioProjects.forEach((project, index) => {
         const div = document.createElement("div");
         div.classList.add("project");
 
         const imageDiv = document.createElement("div");
 
         const image = document.createElement("img");
-        image.src = project.imagesPath + "1.webp";
+        image.src = project.images[0];
         image.alt = "Imagem demonstrativa do projeto";
         
         imageDiv.appendChild(image);
@@ -321,8 +331,8 @@ function createPortfolioProjects() {
 
         techs.appendChild(techsTitleP);
 
-        project.technologies.forEach((tech, index) => {
-            if (index !== 0) {
+        project.technologies.forEach((tech, i) => {
+            if (i !== 0) {
                 const separatorSpan = document.createElement("span");
                 separatorSpan.textContent = "-";
 
@@ -340,7 +350,7 @@ function createPortfolioProjects() {
         const seeMoreButton = document.createElement("button");
         seeMoreButton.type = "button";
         seeMoreButton.title = "Ver mais";
-        seeMoreButton.onclick = toggleModal;
+        seeMoreButton.onclick = () => seeProjectMore(index);
         seeMoreButton.textContent = "Ver mais";
 
         div.appendChild(imageDiv);
@@ -349,6 +359,66 @@ function createPortfolioProjects() {
 
         portfolioDiv.appendChild(div);
     });
+}
+
+async function seeProjectMore(projectIndex) {
+    const modalImagesDiv = document.querySelector("#modal #modal-content div:first-child");
+
+    modalImagesDiv.querySelectorAll("img").forEach((img) => img.remove());
+
+    portfolioProjects[projectIndex].images.forEach((img, index) => {
+        const imgElement = document.createElement("img");
+        imgElement.src = img;
+        imgElement.alt = "Imagem do Projeto";
+
+        if (index === 0)
+            imgElement.classList.add("show");
+
+        modalImagesDiv.appendChild(imgElement);
+    });
+
+    const modalContent = document.querySelectorAll("#modal #modal-content div:last-child > *");
+
+    modalContent[0].textContent = portfolioProjects[projectIndex].title;
+
+    modalContent[1].innerHTML = "";
+
+    portfolioProjects[projectIndex].description.forEach((desc, index) => {
+        modalContent[1].innerHTML += desc;
+
+        if (portfolioProjects[projectIndex].description.length !== index + 1) {
+            const br = document.createElement("br");
+            modalContent[1].appendChild(br);
+        }
+    });
+
+    modalContent[3].innerHTML = "";
+
+    portfolioProjects[projectIndex].technologies.forEach((tech, index) => {
+        modalContent[3].innerHTML += tech;
+
+        if (portfolioProjects[projectIndex].technologies.length !== index + 1) {
+            const br = document.createElement("br");
+            modalContent[3].appendChild(br);
+        }
+    });
+
+    modalContent[4].href = portfolioProjects[projectIndex].url;
+
+    toggleModal();
+}
+
+function changeModalImage(action) {
+    const actualImg = document.querySelector("#modal #modal-content > div:first-child img.show");
+
+    if (action === 0 && actualImg.previousElementSibling && actualImg.previousElementSibling.tagName === "IMG") {
+        actualImg.classList.remove("show");
+        actualImg.previousElementSibling.classList.add("show");
+    }
+    else if (action === 1 && actualImg.nextElementSibling && actualImg.nextElementSibling.tagName === "IMG") {
+        actualImg.classList.remove("show");
+        actualImg.nextElementSibling.classList.add("show");
+    }
 }
 
 window.onload = () => {

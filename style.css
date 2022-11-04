@@ -527,9 +527,9 @@ main section + section {
     right: 0;
     transform: translate(1rem, -.75rem);
     padding: .5rem .75rem;
-    background-color: var(--secondary-color);
+    background-color: var(--primary-color);
     color: var(--main-color);
-    border: 1px solid var(--main-color);
+    border: 1px solid var(--primary-text-color);
     border-radius: .5rem;
     font-size: 1.1rem;
     transition: .3s;
@@ -680,11 +680,11 @@ svg[data-fa-pseudo-element=":before"]
 }
 
 #modal > div {
-    height: 80%;
-    width: 75%;
+    height: 80vh;
+    width: 75vw;
     border-radius: .5rem;
     background-color: var(--primary-color);
-    box-shadow: 0 0 4px 1px var(--secondary-color);
+    box-shadow: 0 0 1px 1px var(--secondary-color);
     display: flex;
     flex-direction: column;
 }
@@ -705,6 +705,86 @@ svg[data-fa-pseudo-element=":before"]
 
 #modal > div #close-modal button:hover {
     transform: scale(110%);
+}
+
+#modal #modal-content {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+    padding: 1rem 2rem;
+}
+
+#modal #modal-content > div {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: 0 .5rem;
+}
+
+#modal #modal-content > div:first-child {
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+#modal #modal-content > div:first-child > img {
+    max-width: 95%;
+    max-height: 100%;
+    position: absolute;
+    transform: scale(0);
+    transition: .3s;
+}
+
+#modal #modal-content > div:first-child > img.show {
+    transform: scale(100%);
+}
+
+#modal #modal-content > div:first-child > button {
+    font-size: 1.25rem;
+    background: transparent;
+    border: none;
+    color: var(--primary-text-color);
+    transition: .25s;
+    position: absolute;
+}
+
+#modal #modal-content > div:first-child > button:first-of-type {
+    left: 0;
+}
+
+#modal #modal-content > div:first-child > button:last-of-type {
+    right: 0;
+}
+
+#modal #modal-content > div:first-child > button:hover {
+    transform: scale(110%);
+}
+
+#modal #modal-content > div:last-child {
+    flex-direction: column;
+}
+
+#modal #modal-content > div:last-child h1 {
+    margin-bottom: .5rem;
+}
+
+#modal #modal-content > div:last-child h2 {
+    margin: 2rem 0 .25rem;
+}
+
+#modal #modal-content > div:last-child > p {
+    text-align: justify;
+}
+
+#modal #modal-content > div:last-child > span {
+    text-align: center;
+}
+
+#modal #modal-content > div:last-child > a {
+    font-size: 1.25rem;
+    text-decoration: none;
+    margin-top: 1.5rem;
 }
 
 @media screen and (max-width: 500px) {
